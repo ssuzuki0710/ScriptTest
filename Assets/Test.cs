@@ -17,7 +17,13 @@ public class Test : MonoBehaviour
         points[3] = 68;
         points[4] = 99;
 
-        // 配列の要素をすべて表示する
+        // 配列の要素をすべて表示する(正順)
+        for (int array = 0; array < 5; array++)
+        {
+            Debug.Log(points[array]);
+        }
+
+        // 配列の要素をすべて表示する(逆順)
         for (int array = 4; array >= 0; array--)
         {
             Debug.Log(points[array]);
