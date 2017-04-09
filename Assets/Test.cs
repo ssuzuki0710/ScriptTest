@@ -1,33 +1,53 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class Boss {
+    private int hp = 100;           //体力
+    private int power = 25;         //攻撃力
+
+    // int型の変数mpを宣言し、53で初期化
+    int MP = 53;
+
+
+
+
+   //mpを消費して魔法攻撃をするMagic関数を作成
+   public void Magic(int m)
+    {
+        Debug.Log(m + "のMPを消費した");
+
+
+        //Magic関数内でmpを5減らし、コンソールに「魔法攻撃をした。残りMPは〇〇。」と表示。
+        //mpが足りない場合、「MPが足りないため魔法が使えない。」と表示。
+        if (MP >= 5)
+        {
+            this.MP -= 5;
+            Debug.Log("魔法攻撃をした。残りMPは" + MP.ToString());
+        }
+        else
+        {
+            Debug.Log("MPが足りないため魔法が使えない。");
+
+        }
+
+    }
+}
+
 public class Test : MonoBehaviour
 {
 
-    // Use this for initialization
     void Start()
     {
-        // 要素数5の配列を初期化する
-        int[] points = new int[5];
+        // Bossクラスの変数を宣言してインスタンスを代入
+        Boss lastboss = new Boss();
 
-        // 配列の各要素に値を代入する
-        points[0] = 77;
-        points[1] = 18;
-        points[2] = 50;
-        points[3] = 68;
-        points[4] = 99;
+       
 
-        // 配列の要素をすべて表示する(正順)
-        for (int array = 0; array < 5; array++)
+        for (int i= 0; i < 15; i += 1)
         {
-            Debug.Log(points[array]);
+            lastboss.Magic(5);
         }
 
-        // 配列の要素をすべて表示する(逆順)
-        for (int array = 4; array >= 0; array--)
-        {
-            Debug.Log(points[array]);
-        }
     }
 
     // Update is called once per frame
